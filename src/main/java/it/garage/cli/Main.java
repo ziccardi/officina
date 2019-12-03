@@ -134,6 +134,7 @@ public class Main {
                 switch(Integer.parseInt(val)) {
                     case 1:
                         printAllPlatforms(grg);
+                        break;
                     case 2:
                         printDailySchedule(grg);
                         break;
@@ -164,7 +165,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         if (args.length != 1) {
-            System.err.println("Usage: java -jar garage.jar path/toi/config/file.xml");
+            System.err.println("Usage: java -jar garage.jar path/to/config/file.xml");
+            return;
         }
 
         File configFile = new File(args[0]);
