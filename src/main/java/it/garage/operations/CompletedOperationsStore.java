@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * This class listens for events on the `Operation` object to store a list of the completed operations.
+ */
 public class CompletedOperationsStore implements PropertyChangeListener {
     private static CompletedOperationsStore INSTANCE = new CompletedOperationsStore();
 
@@ -21,6 +24,9 @@ public class CompletedOperationsStore implements PropertyChangeListener {
         this.reportContainer.put(new Date(), op);
     }
 
+    /**
+     * @return a report of the completed operations divided by date
+     */
     public Map<Date, Operation> getReport() {
         // copy to avoid returing mutable internals
         return new TreeMap<>(this.reportContainer);

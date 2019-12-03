@@ -6,6 +6,9 @@ import it.garage.schedules.Schedule;
 
 import java.util.*;
 
+/**
+ * Manages a single platform.
+ */
 public class Platform {
     private final List<String> supportedVehicles;
     private final List<String> supportedServices;

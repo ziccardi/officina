@@ -3,13 +3,27 @@ package it.garage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An object representing the entire garage.
+ */
 public class Garage {
     private List<Platform> platforms = new ArrayList<>();
 
+    /**
+     * Adds a new platform to the garage
+     * @param p platform to be added.
+     */
     public void addPlatform(Platform p) {
         this.platforms.add(p);
     }
 
+    /**
+     * Schedules a new operation in the garage at the best available time.
+     * @param vehicle The vehicle to be serviced
+     * @param operationType The type of service to be performed
+     * @return An estimation of when the service will be executed
+     * @throws OperationNotSupportedException if the specified service is not supported for the specified vehicle.
+     */
     public Platform.Estimation scheduleOperation(String vehicle, String operationType) throws OperationNotSupportedException {
         // find the earliest possible time
         Platform.Estimation earliestTime = null;

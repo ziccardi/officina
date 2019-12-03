@@ -13,6 +13,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * Entry point
+ */
 public class Main {
 
     private static String readLine() throws Exception {
@@ -175,12 +178,6 @@ public class Main {
         }
 
         Garage grg = ConfigLoader.parseConfig(configFile);
-        grg.scheduleOperation("CAMION", "CAMBIO FILTRO");
-        grg.scheduleOperation("CAMION", "CAMBIO FILTRO");
-        grg.scheduleOperation("CAMION", "CAMBIO FILTRO");
-        grg.scheduleOperation("CAMION", "CAMBIO FILTRO");
-        grg.scheduleOperation("AUTO", "CAMBIO GOMME");
-        grg.scheduleOperation("CAMION", "CAMBIO OLIO");
         printMenu(grg);
     }
 }

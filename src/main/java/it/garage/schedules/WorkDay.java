@@ -7,10 +7,24 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.*;
 
+/**
+ * Manages the schedule for a given day.
+ */
 public class WorkDay implements PropertyChangeListener {
+
+    /**
+     * The working day starts at 8 in the morning
+     */
     private final static int startTime = 8;
+
+    /**
+     * The working day ends at 5 in the evening
+     */
     private final static int endTime = 17;
 
+    /**
+     * Utility constanst to convert to/from milliseconds
+     */
     private final static long SECOND = 1000;
     private final static long MINUTE = 60 * SECOND;
     private final static long HOUR = 60 * MINUTE;
@@ -20,6 +34,9 @@ public class WorkDay implements PropertyChangeListener {
     private final Date date;
     private List<Operation> dailySchedule = new ArrayList<>();
 
+    /**
+     * Creates a new workday initialized with the 'today' date.
+     */
     public WorkDay() {
         this(null);
     }
@@ -29,13 +46,13 @@ public class WorkDay implements PropertyChangeListener {
         Calendar c = Calendar.getInstance();
         if (previous == null) {
             c.setTime(new Date());
-            c.set(Calendar.HOUR_OF_DAY, 8);
+            c.set(Calendar.HOUR_OF_DAY, startTime);
             c.set(Calendar.MINUTE, 0);
             c.set(Calendar.SECOND, 0);
             this.date = c.getTime();
         } else {
             c.setTime(previous.date);
-            c.set(Calendar.HOUR_OF_DAY, 8);
+            c.set(Calendar.HOUR_OF_DAY, startTime);
             c.set(Calendar.MINUTE, 0);
             c.set(Calendar.SECOND, 0);
             c.add(Calendar.DATE, 1);
@@ -43,6 +60,11 @@ public class WorkDay implements PropertyChangeListener {
         }
     }
 
+    /**
+     * Returns the date/time where the operation could be inserted or null if there is no available slots in this day.
+     * @param newOp the operation to be evaluated.
+     * @return the date/time where the operation could be inserted or null if there is no available slots in this day.
+     */
     public Date fits(Operation newOp) {
         long total = 0;
         for (Operation op: this.dailySchedule) {
@@ -55,6 +77,11 @@ public class WorkDay implements PropertyChangeListener {
         return null;
     }
 
+    /**
+     * Adds an operation to the schedule for the current day if possible.
+     * @param newOp the operation to be scheduled.
+     * @return the date/time where the operation could be inserted or null if there is no available slots in this day.
+     */
     public Date add(Operation newOp) {
         Date executionTime = this.fits(newOp);
         if (executionTime != null) {

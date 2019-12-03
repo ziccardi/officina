@@ -8,7 +8,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Simple class that loads the garage config from an XML file
+ */
 public class ConfigLoader {
 
     private static List<String> nodeListToStringArray(NodeList nl, String attName) {
@@ -59,15 +61,4 @@ public class ConfigLoader {
 
         return garage;
     }
-
-    public static void main(String[] args) throws Exception {
-        Garage grg = new ConfigLoader().parseConfig(new File("/Users/ziccardi/work/personal/Garage/src/main/resources/config.xml"));
-        System.out.println(grg.scheduleOperation("CAMION", "CAMBIO FILTRO"));
-        System.out.println(grg.scheduleOperation("CAMION", "CAMBIO FILTRO"));
-        System.out.println(grg.scheduleOperation("CAMION", "CAMBIO FILTRO"));
-        System.out.println(grg.scheduleOperation("CAMION", "CAMBIO FILTRO"));
-        System.out.println(grg.scheduleOperation("AUTO", "CAMBIO GOMME"));
-        System.out.println(grg.scheduleOperation("CAMION", "CAMBIO OLIO"));
-    }
-
 }

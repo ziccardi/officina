@@ -4,6 +4,9 @@ import it.garage.operations.Operation;
 
 import java.util.*;
 
+/**
+ * Mantains the garage day by day schedule.
+ */
 public class Schedule {
     private List<WorkDay> workdays = new ArrayList<>();
 
@@ -31,14 +34,26 @@ public class Schedule {
         }
     }
 
+    /**
+     * @param op The operation that we'd like to schedule.
+     * @return And estimation of when the operation can be executed.
+     */
     public Date estimate(Operation op) {
         return getFirstAvailableWorkday(op, false).fits(op);
     }
 
+    /**
+     * Schedule a new operation as soon as possible.
+     * @param op The operation to be scheduled.
+     * @return the date when the operation will be executed.
+     */
     public Date add(Operation op) {
         return getFirstAvailableWorkday(op, true).add(op);
     }
 
+    /**
+     * @return a day by day report of the operation to be executed in a platform.
+     */
     public Map<Date, Map<Date, Operation>> getScheduleMap() {
         Map<Date, Map<Date, Operation>> res = new TreeMap<>();
 
