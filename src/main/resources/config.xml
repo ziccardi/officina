@@ -1,0 +1,30 @@
+<Garage>
+    <Operations>
+        <Operation name="CAMBIO OLIO" duration="60"/>
+        <Operation name="CAMBIO FILTRO" duration="240"/>
+        <Operation name="CAMBIO GOMME" duration="60"/>
+        <Operation name="SOSTITUZIONE PARABREZZA" duration="240"/>
+    </Operations>
+    <Platforms>
+        <Platform name="TIR-PLATFORM">
+            <Vehicles>
+                <Vehicle name="CAMION"/>
+                <Vehicle name="AUTOBUS"/>
+            </Vehicles>
+            <Operations>
+                <Operation name="CAMBIO OLIO"/>
+                <Operation name="CAMBIO FILTRO"/>
+            </Operations>
+        </Platform>
+        <Platform name="CAR-PLATFORM">
+            <Vehicles>
+                <Vehicle name="AUTO"/>
+                <Vehicle name="MOTO"/>
+            </Vehicles>
+            <Operations>
+                <Operation name="CAMBIO GOMME"/>
+                <Operation name="SOSTITUZIONE PARABREZZA"/>
+            </Operations>
+        </Platform>
+    </Platforms>
+</Garage>
